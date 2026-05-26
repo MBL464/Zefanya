@@ -153,11 +153,6 @@
         }
         .stadium-wrapper:hover .stadium-img { transform: scale(1.05); }
 
-        /* LIGHTBOX IMAGE SCALING */
-        #lightbox-img {
-            max-height: 70vh; width: auto; max-width: 100%; object-fit: contain;
-        }
-        
         /* STICKY CARD CONTAINER */
         .sticky-card {
             position: sticky; top: 100px;
@@ -188,7 +183,7 @@
                 <a href="#profile" class="hover:text-brand-500 transition-colors">Profil</a>
                 <a href="#experience" class="hover:text-brand-500 transition-colors">Karir</a>
                 <a href="#achievements" class="hover:text-brand-500 transition-colors">Prestasi</a>
-                <a href="#gallery" class="hover:text-brand-500 transition-colors">Galeri</a>
+                <a href="#gallery" class="hover:text-brand-500 transition-colors">Galeri Media</a>
             </div>
 
             <!-- Controls (Desktop & Tablet) -->
@@ -204,8 +199,8 @@
 
             <!-- Mobile Hamburger Button -->
             <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white z-50 relative outline-none focus:ring-2 focus:ring-brand-500">
-                <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
-                <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
+                <span id="menu-icon-wrapper" class="block"><i data-lucide="menu" class="w-5 h-5"></i></span>
+                <span id="close-icon-wrapper" class="hidden"><i data-lucide="x" class="w-5 h-5"></i></span>
             </button>
         </div>
 
@@ -214,7 +209,7 @@
             <a href="#profile" class="mobile-link text-3xl font-black text-zinc-900 dark:text-white hover:text-brand-500 transition-colors">Profil</a>
             <a href="#experience" class="mobile-link text-3xl font-black text-zinc-900 dark:text-white hover:text-brand-500 transition-colors">Karir</a>
             <a href="#achievements" class="mobile-link text-3xl font-black text-zinc-900 dark:text-white hover:text-brand-500 transition-colors">Prestasi</a>
-            <a href="#gallery" class="mobile-link text-3xl font-black text-zinc-900 dark:text-white hover:text-brand-500 transition-colors">Galeri</a>
+            <a href="#gallery" class="mobile-link text-3xl font-black text-zinc-900 dark:text-white hover:text-brand-500 transition-colors">Galeri Media</a>
             
             <div class="flex items-center gap-4 mt-8">
                 <button id="mobile-theme-toggle" class="p-4 rounded-full bg-zinc-100 dark:bg-zinc-800 transition-colors">
@@ -265,16 +260,12 @@
                 <!-- Hero Image (Direct Link, Pill Shape) -->
                 <div class="lg:col-span-5 w-full max-w-[260px] sm:max-w-[340px] mx-auto lg:max-w-none reveal-up order-1 lg:order-2" style="transition-delay: 400ms;">
                     <div class="stadium-wrapper border-[6px] md:border-8 border-white dark:border-zinc-900 bg-zinc-100 dark:bg-zinc-800 group">
-                        <!-- Gradient Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-brand-500/20 to-transparent z-10 pointer-events-none"></div>
-                        
-                        <!-- Gambar dari Link Langsung (Aman) -->
                         <img 
                             src="https://i.ibb.co.com/mrHM68Sg/character.png" 
                             alt="Zefanya Zulian Professional Profile" 
                             class="stadium-img"
                         />
-                        
                         <!-- Floating Badge -->
                         <div class="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center gap-3 z-20 shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 whitespace-nowrap">
                             <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i>
@@ -374,7 +365,6 @@
                     <h2 class="text-3xl md:text-5xl font-black tracking-tighter">Riwayat Eksekutif</h2>
                 </div>
 
-                <!-- Timeline Containers dengan Sticky Behavior -->
                 <div class="space-y-6 md:space-y-8 relative pb-10 md:pb-16 before:absolute before:inset-0 before:ml-[1.1rem] md:before:ml-6 before:-translate-x-px md:before:translate-x-0 before:h-full before:w-[2px] before:bg-zinc-200 dark:before:bg-zinc-800">
                     
                     <!-- Job 1 -->
@@ -394,7 +384,6 @@
                     </div>
 
                     <!-- Job 2 -->
-                    <!-- Gunakan z-index yang lebih tinggi untuk efek tumpukan yang benar -->
                     <div class="sticky-card relative flex gap-6 md:gap-8 items-start group z-20" style="top: 100px; @media (min-width: 768px) { top: 140px; }">
                         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-white dark:border-[#09090b] bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300 group-hover:bg-brand-500 group-hover:text-white transition-colors flex items-center justify-center shrink-0 z-10 shadow-sm relative left-0 md:left-auto">
                             <i data-lucide="truck" class="w-4 h-4"></i>
@@ -477,68 +466,95 @@
             </div>
         </section>
 
-        <!-- VISUAL GALLERY SECTION -->
+        <!-- VISUAL & MEDIA GALLERY SECTION (Dukungan Gambar & Video) -->
         <section id="gallery" class="px-5 md:px-8 mb-24 md:mb-36">
             <div class="max-w-7xl mx-auto">
                 <div class="reveal-up flex flex-col items-center md:items-start mb-10 md:mb-12 text-center md:text-left">
-                    <span class="text-[10px] font-black text-brand-500 uppercase tracking-widest mb-3 font-mono">FIELD DOCUMENTATION</span>
-                    <h2 class="text-3xl md:text-5xl font-black tracking-tight">Galeri & Visual</h2>
+                    <span class="text-[10px] font-black text-brand-500 uppercase tracking-widest mb-3 font-mono">MEDIA DOCUMENTATION</span>
+                    <h2 class="text-3xl md:text-5xl font-black tracking-tight">Galeri & Media</h2>
                 </div>
 
                 <!-- Grid Galeri -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     
-                    <!-- Item 1 -->
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop', 'Manajemen Logistik Mineral', 'Pengawasan armada angkut (hauling) dari area pemuatan hingga tujuan pengantaran akhir secara presisi.')" 
+                    <!-- Item 1: PT Aba Mandiri Sejahtera (IMAGE) -->
+                    <div onclick="openLightbox(0)" 
                          class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="Logistics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white font-bold text-lg">Bayah Transport</h3>
-                            <p class="text-brand-300 text-xs mt-1">Klik untuk detail</p>
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="PT Aba Mandiri Sejahtera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <h3 class="text-white font-bold text-lg">PT Aba Mandiri Sejahtera</h3>
+                            <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
                         </div>
                     </div>
 
-                    <!-- Item 2 -->
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=1200&auto=format&fit=crop', 'Infrastruktur Jembatan', 'Proses pengadaan material struktural jembatan yang melibatkan sistem kontrol suplai rantai ketat (inventory control).')" 
+                    <!-- Item 2: PT Mahaputra Baruna Logistik (VIDEO) -->
+                    <div onclick="openLightbox(1)" 
                          class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800" style="transition-delay: 100ms;">
-                        <img src="https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=800&auto=format&fit=crop" alt="Construction" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white font-bold text-lg">Bridge Procurement</h3>
-                            <p class="text-brand-300 text-xs mt-1">Klik untuk detail</p>
+                        
+                        <!-- Thumbnail/Poster untuk Video -->
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="PT Mahaputra Baruna Logistik" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        
+                        <!-- Icon Play Overlays untuk penanda bahwa ini adalah Video -->
+                        <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none transition-transform duration-300 group-hover:scale-110">
+                            <div class="w-14 h-14 bg-white/20 dark:bg-black/30 backdrop-blur-md rounded-full border border-white/30 flex items-center justify-center text-white shadow-xl">
+                                <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+                            </div>
+                        </div>
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-20">
+                            <h3 class="text-white font-bold text-lg leading-tight">PT Mahaputra Baruna</h3>
+                            <p class="text-brand-300 text-xs mt-1 flex items-center gap-1.5"><i data-lucide="video" class="w-3 h-3"></i> Putar Video</p>
                         </div>
                     </div>
 
-                    <!-- Item 3 -->
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop', 'Real Estate Operations', 'Rapat koordinasi dan manajemen operasional di sektor properti korporat guna meningkatkan efisiensi komersial.')" 
+                    <!-- Item 3: PT Asri Praya, KSO (IMAGE) -->
+                    <div onclick="openLightbox(2)" 
                          class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800" style="transition-delay: 200ms;">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Real Estate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white font-bold text-lg">Aba Mandiri Estate</h3>
-                            <p class="text-brand-300 text-xs mt-1">Klik untuk detail</p>
+                        <img src="https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=800&auto=format&fit=crop" alt="PT Asri Praya KSO" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <h3 class="text-white font-bold text-lg">PT Asri Praya, KSO</h3>
+                            <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
                         </div>
                     </div>
 
                 </div>
+                
+                <p class="text-xs text-zinc-400 mt-6 text-center italic reveal-up">*Media di atas mewakili ringkasan dokumentasi. Klik item berlogo Putar untuk melihat cuplikan rekaman video lapangan.</p>
             </div>
         </section>
 
-        <!-- LIGHTBOX MODAL (Aman & Tidak Memicu Scrolling) -->
+        <!-- LIGHTBOX MODAL (Smart Media Player - Auto Detect Image/Video) -->
         <div id="lightbox-modal" class="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10 opacity-0 pointer-events-none transition-opacity duration-300">
             <button onclick="closeLightbox()" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white p-2 z-50 bg-white/10 rounded-full transition-colors">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             
             <div class="relative w-full max-w-4xl flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl scale-95 transition-transform duration-300" id="lightbox-content">
-                <div class="w-full md:w-3/5 bg-black flex items-center justify-center p-2 relative h-[40vh] md:h-auto">
-                    <img id="lightbox-img" src="" alt="Detail View" class="absolute inset-0 w-full h-full object-cover rounded-lg md:rounded-none opacity-0 transition-opacity duration-500">
+                
+                <!-- Area Media Dinamis (Gambar atau Video) -->
+                <div class="w-full md:w-3/5 bg-black flex items-center justify-center relative h-[40vh] md:h-auto min-h-[300px]">
+                    <!-- Image Tag -->
+                    <img id="lightbox-img" src="" alt="Detail View" class="absolute inset-0 w-full h-full object-contain md:object-cover rounded-t-2xl md:rounded-l-3xl md:rounded-tr-none opacity-0 transition-opacity duration-500 hidden">
+                    
+                    <!-- Video Tag -->
+                    <video id="lightbox-video" src="" controls playsinline class="absolute inset-0 w-full h-full object-contain md:object-cover rounded-t-2xl md:rounded-l-3xl md:rounded-tr-none opacity-0 transition-opacity duration-500 hidden"></video>
                 </div>
+
                 <div class="w-full md:w-2/5 p-6 md:p-10 flex flex-col justify-center bg-zinc-900 text-white">
                     <span class="text-brand-400 font-mono text-[10px] font-bold tracking-widest mb-3 block uppercase">FIELD REPORT</span>
-                    <h3 id="lightbox-title" class="text-xl md:text-3xl font-black mb-4">Judul</h3>
+                    <h3 id="lightbox-title" class="text-xl md:text-3xl font-black mb-4 leading-tight">Judul</h3>
                     <p id="lightbox-desc" class="text-zinc-400 text-sm md:text-base leading-relaxed">Deskripsi</p>
-                    <button onclick="closeLightbox()" class="mt-8 px-6 py-3 rounded-xl bg-white text-zinc-950 font-bold text-xs uppercase tracking-wider md:hidden">
-                        Tutup
-                    </button>
+                    
+                    <!-- Navigasi -->
+                    <div class="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-zinc-800">
+                        <div class="flex gap-2">
+                            <button onclick="prevLightbox()" class="p-3 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                            <button onclick="nextLightbox()" class="p-3 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                        <button onclick="closeLightbox()" class="px-6 py-3 rounded-xl bg-white text-zinc-950 font-bold text-xs uppercase tracking-wider md:hidden">
+                            Tutup
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -623,7 +639,10 @@
         document.addEventListener("DOMContentLoaded", () => {
             lucide.createIcons();
             setTimeout(() => {
-                document.getElementById('preloader').classList.add('preloader-hidden');
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('preloader-hidden');
+                }
             }, 600);
         });
 
@@ -649,8 +668,8 @@
         // 4. Mobile Menu Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
+        const menuIconWrapper = document.getElementById('menu-icon-wrapper');
+        const closeIconWrapper = document.getElementById('close-icon-wrapper');
         const mobileLinks = document.querySelectorAll('.mobile-link');
         let isMenuOpen = false;
 
@@ -658,18 +677,18 @@
             isMenuOpen = !isMenuOpen;
             if(isMenuOpen) {
                 mobileMenu.classList.add('active');
-                menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
+                menuIconWrapper.classList.add('hidden'); closeIconWrapper.classList.remove('hidden');
                 document.body.style.overflow = 'hidden'; 
             } else {
                 mobileMenu.classList.remove('active');
-                menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
+                menuIconWrapper.classList.remove('hidden'); closeIconWrapper.classList.add('hidden');
                 document.body.style.overflow = '';
             }
         }
         menuBtn.addEventListener('click', toggleMobileMenu);
         mobileLinks.forEach(link => link.addEventListener('click', toggleMobileMenu));
 
-        // 5. Scroll Reveal Intersection Observer (Flawless)
+        // 5. Scroll Reveal Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -680,30 +699,106 @@
         }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
 
-        // 6. Lightbox Gallery Logic (No Jumping, Body Locked)
+        // 6. SMART LIGHTBOX GALLERY LOGIC (MENDUKUNG FOTO & VIDEO)
         const lightbox = document.getElementById('lightbox-modal');
         const lbContent = document.getElementById('lightbox-content');
         const lbImg = document.getElementById('lightbox-img');
+        const lbVideo = document.getElementById('lightbox-video');
         const lbTitle = document.getElementById('lightbox-title');
         const lbDesc = document.getElementById('lightbox-desc');
 
-        function openLightbox(imgSrc, title, desc) {
-            lbImg.src = imgSrc; lbTitle.innerText = title; lbDesc.innerText = desc;
+        // Data array mencakup tipe "image" dan "video"
+        const galleryData = [
+            {
+                type: "image",
+                title: "PT. Aba Mandiri Sejahtera",
+                desc: "Dokumentasi manajemen operasional perusahaan di bidang pengadaan barang dan sinkronisasi manajemen aset properti (Real Estate) berskala besar.",
+                src: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+            },
+            {
+                type: "video",
+                title: "PT. Mahaputra Baruna Logistik",
+                desc: "Rekaman lapangan saat mengomandoi operasional armada pengangkut mineral (Bayah Mineral Transport). Memastikan mitigasi downtime kendaraan secara real-time.",
+                src: "https://cdn.pixabay.com/video/2021/08/11/84687-586794691_large.mp4" // Video truk kargo berkualitas tinggi
+            },
+            {
+                type: "image",
+                title: "PT. Asri Praya, KSO",
+                desc: "Dokumentasi pengadaan material struktural jembatan secara end-to-end di Kalimantan. Melibatkan negosiasi strategis dan implementasi inventarisasi berbasis digital.",
+                src: "https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=1200&auto=format&fit=crop"
+            }
+        ];
+
+        let lbIndex = 0;
+
+        function openLightbox(index) {
+            lbIndex = index;
+            updateLightboxContent();
+            
             lightbox.classList.remove('opacity-0', 'pointer-events-none');
             setTimeout(() => {
                 lbContent.classList.remove('scale-95');
-                lbImg.classList.remove('opacity-0');
             }, 50);
             document.body.style.overflow = 'hidden'; 
         }
 
         function closeLightbox() {
             lbContent.classList.add('scale-95');
-            lbImg.classList.add('opacity-0');
+            
+            // Jeda video yang sedang berjalan agar suara tidak bocor
+            if(lbVideo) lbVideo.pause(); 
+            
             setTimeout(() => {
                 lightbox.classList.add('opacity-0', 'pointer-events-none');
                 document.body.style.overflow = '';
             }, 300);
+        }
+
+        function nextLightbox() {
+            lbIndex = (lbIndex + 1) % galleryData.length;
+            updateLightboxContent();
+        }
+
+        function prevLightbox() {
+            lbIndex = (lbIndex - 1 + galleryData.length) % galleryData.length;
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            const data = galleryData[lbIndex];
+            lbTitle.innerText = data.title; 
+            lbDesc.innerText = data.desc;
+
+            // Transisi fading out untuk media lama
+            lbImg.classList.add('opacity-0');
+            lbVideo.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                // Sembunyikan dan jeda media lama
+                lbImg.classList.add('hidden');
+                lbVideo.classList.add('hidden');
+                lbVideo.pause(); 
+
+                // Periksa apakah item saat ini adalah video atau gambar
+                if (data.type === 'video') {
+                    lbVideo.src = data.src;
+                    lbVideo.classList.remove('hidden');
+                    
+                    // Mainkan video dan fade-in
+                    setTimeout(() => {
+                        lbVideo.classList.remove('opacity-0');
+                        lbVideo.play();
+                    }, 50);
+                } else {
+                    lbImg.src = data.src;
+                    lbImg.classList.remove('hidden');
+                    
+                    // Cegah "blank state", tunggu gambar termuat sebelum memunculkannya
+                    lbImg.onload = () => {
+                        lbImg.classList.remove('opacity-0');
+                    };
+                }
+            }, 300); // 300ms sesuai durasi transisi Tailwind
         }
     </script>
 </body>
