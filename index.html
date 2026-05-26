@@ -144,22 +144,17 @@
             position: relative; overflow: hidden; border-radius: 999px; /* Pill shape */
             padding-top: 130%; /* Fix aspect ratio to prevent jumping */
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+            background-color: transparent !important; /* Menyesuaikan background dengan contain */
         }
         @media (min-width: 768px) { .stadium-wrapper { box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15); } }
         .stadium-img {
             position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; object-fit: cover;
+            width: 100%; height: 100%; object-fit: contain; /* Diubah agar tidak terpotong */
             transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .stadium-wrapper:hover .stadium-img { transform: scale(1.05); }
 
         /* LIGHTBOX IMAGE SCALING */
-        #lightbox-img {
-            max-height: 70vh; width: auto; max-width: 100%; object-fit: contain;
-        }
-        
-        /* STICKY CARD CONTAINER */
-        .sticky-card {
             position: sticky; top: 100px;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
             will-change: transform;
@@ -262,15 +257,14 @@
                     </div>
                 </div>
 
-                <!-- Hero Image (Local Upload, Pill Shape) -->
+                <!-- Hero Image (Direct Link, Pill Shape) -->
                 <div class="lg:col-span-5 w-full max-w-[260px] sm:max-w-[340px] mx-auto lg:max-w-none reveal-up order-1 lg:order-2" style="transition-delay: 400ms;">
                     <div class="stadium-wrapper border-[6px] md:border-8 border-white dark:border-zinc-900 bg-zinc-100 dark:bg-zinc-800 group">
                         <div class="absolute inset-0 bg-gradient-to-tr from-brand-500/20 to-transparent z-10 pointer-events-none"></div>
                         <img 
-                            src="character.png" 
+                            src="https://i.ibb.co.com/mrHM68Sg/character.png" 
                             alt="Zefanya Zulian Professional Profile" 
                             class="stadium-img"
-                            onerror="this.onerror=null; this.src='#';"
                         />
                         <!-- Floating Badge -->
                         <div class="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center gap-3 z-20 shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 whitespace-nowrap">
@@ -486,8 +480,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     
                     <!-- Item 1: Video PT Mahaputra Baruna -->
-                    <div onclick="openLightbox(0)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800">
-                        <img src="mahaputra-baruna.png" alt="PT Mahaputra Baruna" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(0)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+                        <img src="mahaputra-baruna.png" alt="PT Mahaputra Baruna" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none transition-transform duration-300 group-hover:scale-110">
                             <div class="w-14 h-14 bg-white/20 dark:bg-black/30 backdrop-blur-md rounded-full border border-white/30 flex items-center justify-center text-white shadow-xl">
                                 <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
@@ -500,8 +494,8 @@
                     </div>
 
                     <!-- Item 2: Video PT Asri Praya -->
-                    <div onclick="openLightbox(1)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800" style="transition-delay: 100ms;">
-                        <img src="asri-praya.png" alt="PT Asri Praya KSO" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(1)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center" style="transition-delay: 100ms;">
+                        <img src="asri-praya.png" alt="PT Asri Praya KSO" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none transition-transform duration-300 group-hover:scale-110">
                             <div class="w-14 h-14 bg-white/20 dark:bg-black/30 backdrop-blur-md rounded-full border border-white/30 flex items-center justify-center text-white shadow-xl">
                                 <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
@@ -514,8 +508,8 @@
                     </div>
 
                     <!-- Item 3: Foto PT Aba Mandiri -->
-                    <div onclick="openLightbox(2)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800" style="transition-delay: 200ms;">
-                        <img src="aba-mandiri.png" alt="PT Aba Mandiri Sejahtera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(2)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center" style="transition-delay: 200ms;">
+                        <img src="aba-mandiri.png" alt="PT Aba Mandiri Sejahtera" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <h3 class="text-white font-bold text-lg">Foto: Aba Mandiri Sejahtera</h3>
                             <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
@@ -523,8 +517,8 @@
                     </div>
 
                     <!-- Item 4: Foto PT Mahaputra Baruna -->
-                    <div onclick="openLightbox(3)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800">
-                        <img src="mahaputra-baruna.png" alt="PT Mahaputra Baruna" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(3)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+                        <img src="mahaputra-baruna.png" alt="PT Mahaputra Baruna" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <h3 class="text-white font-bold text-lg">Foto: Mahaputra Baruna</h3>
                             <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
@@ -532,8 +526,8 @@
                     </div>
 
                     <!-- Item 5: Foto PT Asri Praya -->
-                    <div onclick="openLightbox(4)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800" style="transition-delay: 100ms;">
-                        <img src="asri-praya.png" alt="PT Asri Praya" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(4)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center" style="transition-delay: 100ms;">
+                        <img src="asri-praya.png" alt="PT Asri Praya" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <h3 class="text-white font-bold text-lg">Foto: Asri Praya, KSO</h3>
                             <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
@@ -541,8 +535,8 @@
                     </div>
 
                     <!-- Item 6: Foto Vaksinasi -->
-                    <div onclick="openLightbox(5)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800" style="transition-delay: 200ms;">
-                        <img src="vaksinasi.png" alt="Vaksinasi COVID-19" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1615461066841-6116e61058f4?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(5)" class="reveal-up cursor-pointer bento-card relative aspect-square md:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center" style="transition-delay: 200ms;">
+                        <img src="vaksinasi.png" alt="Vaksinasi COVID-19" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1615461066841-6116e61058f4?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <h3 class="text-white font-bold text-lg">Foto: Giat Vaksinasi</h3>
                             <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
@@ -550,8 +544,8 @@
                     </div>
 
                     <!-- Item 7: Foto Juara Basket (Tengah Bawah) -->
-                    <div onclick="openLightbox(6)" class="reveal-up sm:col-span-2 lg:col-span-1 lg:col-start-2 cursor-pointer bento-card relative aspect-[2/1] sm:aspect-auto lg:aspect-[4/3] group overflow-hidden bg-zinc-200 dark:bg-zinc-800">
-                        <img src="porseni-basket.png" alt="Porseni Basketball Event" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=800&auto=format&fit=crop';">
+                    <div onclick="openLightbox(6)" class="reveal-up sm:col-span-2 lg:col-span-1 lg:col-start-2 cursor-pointer bento-card relative aspect-[2/1] sm:aspect-auto lg:aspect-[4/3] group overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+                        <img src="porseni-basket.png" alt="Porseni Basketball Event" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=800&auto=format&fit=crop';">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <h3 class="text-white font-bold text-lg">Foto: Juara 1 Porseni Basket</h3>
                             <p class="text-brand-300 text-xs mt-1">Lihat Foto</p>
@@ -559,37 +553,41 @@
                     </div>
 
                 </div>
-                
-                <p class="text-xs text-zinc-400 mt-6 text-center italic reveal-up">*Media di atas telah dikonfigurasi untuk membaca file lokal Anda. Jika belum diunggah, gambar cadangan yang relevan akan ditampilkan otomatis.</p>
             </div>
         </section>
 
-        <!-- LIGHTBOX MODAL (Smart Media Player - Mendukung 7 File) -->
+        <!-- LIGHTBOX MODAL (Smart Media Player - Auto Detect Image/Video) -->
         <div id="lightbox-modal" class="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10 opacity-0 pointer-events-none transition-opacity duration-300">
-            <button onclick="closeLightbox()" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white p-2 z-50 bg-white/10 rounded-full transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
+            <!-- TOMBOL CLOSE PALING MENONJOL (FIXED TOP RIGHT) -->
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 md:top-8 md:right-8 bg-rose-600 hover:bg-rose-700 text-white p-3 md:p-4 rounded-full z-[1050] transition-colors shadow-lg border border-rose-500/50 flex items-center gap-2">
+                <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6"></i>
+                <span class="hidden md:block text-xs font-bold uppercase tracking-wider pr-1">Tutup</span>
             </button>
             
-            <div class="relative w-full max-w-4xl flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl scale-95 transition-transform duration-300" id="lightbox-content">
+            <!-- Modal Box -->
+            <div class="relative w-full max-w-5xl flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl scale-95 transition-transform duration-300 max-h-[90vh] md:max-h-[85vh]" id="lightbox-content">
                 
                 <!-- Area Media Dinamis -->
-                <div class="w-full md:w-3/5 bg-black flex items-center justify-center relative h-[40vh] md:h-auto min-h-[300px]">
-                    <img id="lightbox-img" src="" alt="Detail View" class="absolute inset-0 w-full h-full object-contain md:object-cover rounded-t-2xl md:rounded-l-3xl md:rounded-tr-none opacity-0 transition-opacity duration-500 hidden">
-                    <video id="lightbox-video" src="" controls playsinline class="absolute inset-0 w-full h-full object-contain md:object-cover rounded-t-2xl md:rounded-l-3xl md:rounded-tr-none opacity-0 transition-opacity duration-500 hidden"></video>
+                <div class="w-full md:w-3/5 bg-black flex items-center justify-center relative h-[40vh] md:h-auto min-h-[300px] shrink-0 p-2 md:p-4">
+                    <img id="lightbox-img" src="" alt="Detail View" class="absolute inset-0 w-full h-full object-contain rounded-t-2xl md:rounded-l-3xl md:rounded-tr-none opacity-0 transition-opacity duration-500 hidden p-2">
+                    <video id="lightbox-video" src="" controls playsinline class="absolute inset-0 w-full h-full object-contain rounded-t-2xl md:rounded-l-3xl md:rounded-tr-none opacity-0 transition-opacity duration-500 hidden p-2"></video>
                 </div>
 
-                <div class="w-full md:w-2/5 p-6 md:p-10 flex flex-col justify-center bg-zinc-900 text-white">
-                    <span class="text-brand-400 font-mono text-[10px] font-bold tracking-widest mb-3 block uppercase">FIELD REPORT</span>
-                    <h3 id="lightbox-title" class="text-xl md:text-3xl font-black mb-4 leading-tight">Judul</h3>
-                    <p id="lightbox-desc" class="text-zinc-400 text-sm md:text-base leading-relaxed">Deskripsi</p>
+                <!-- Area Teks dengan Scroll Internal Anti-Overflow -->
+                <div class="w-full md:w-2/5 p-6 md:p-10 flex flex-col justify-start bg-zinc-900 text-white overflow-y-auto">
+                    <div>
+                        <span class="text-brand-400 font-mono text-[10px] font-bold tracking-widest mb-3 block uppercase">FIELD REPORT</span>
+                        <h3 id="lightbox-title" class="text-xl md:text-3xl font-black mb-4 leading-tight">Judul</h3>
+                        <p id="lightbox-desc" class="text-zinc-400 text-sm md:text-base leading-relaxed">Deskripsi</p>
+                    </div>
                     
-                    <!-- Navigasi -->
+                    <!-- Navigasi Bawah -->
                     <div class="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-zinc-800">
                         <div class="flex gap-2">
                             <button onclick="prevLightbox()" class="p-3 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
                             <button onclick="nextLightbox()" class="p-3 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
                         </div>
-                        <button onclick="closeLightbox()" class="px-6 py-3 rounded-xl bg-white text-zinc-950 font-bold text-xs uppercase tracking-wider md:hidden">
+                        <button onclick="closeLightbox()" class="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs uppercase tracking-wider md:hidden transition-colors border border-zinc-700">
                             Tutup
                         </button>
                     </div>
@@ -737,7 +735,7 @@
         }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
 
-        // 6. SMART LIGHTBOX GALLERY LOGIC (MENDUKUNG 2 VIDEO LOKAL & 5 FOTO LOKAL)
+        // 6. SMART LIGHTBOX GALLERY LOGIC (ANTI-OVERFLOW & EXPLICIT CLOSE BUTTON)
         const lightbox = document.getElementById('lightbox-modal');
         const lbContent = document.getElementById('lightbox-content');
         const lbImg = document.getElementById('lightbox-img');
@@ -749,7 +747,7 @@
             {
                 type: "video",
                 title: "Video: Mahaputra Baruna Logistik",
-                desc: "Rekaman lapangan saat mengomandoi operasional armada pengangkut mineral (Bayah Mineral Transport).",
+                desc: "Rekaman lapangan saat mengomandoi operasional armada pengangkut mineral (Bayah Mineral Transport). Memastikan mitigasi downtime kendaraan secara real-time.",
                 src: "mahaputra-baruna.mp4",
                 fallback: "https://cdn.pixabay.com/video/2021/08/11/84687-586794691_large.mp4"
             },
@@ -763,7 +761,7 @@
             {
                 type: "image",
                 title: "Foto: Aba Mandiri Sejahtera",
-                desc: "Dokumentasi manajemen operasional perusahaan di bidang pengadaan barang dan manajemen aset properti.",
+                desc: "Dokumentasi manajemen operasional perusahaan di bidang pengadaan barang dan sinkronisasi manajemen aset properti (Real Estate) berskala besar.",
                 src: "aba-mandiri.png",
                 fallback: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
             },
@@ -777,7 +775,7 @@
             {
                 type: "image",
                 title: "Foto: Asri Praya, KSO",
-                desc: "Dokumentasi statis pengadaan material struktural jembatan secara end-to-end.",
+                desc: "Dokumentasi statis pengadaan material struktural jembatan secara end-to-end di Kalimantan. Melibatkan negosiasi strategis dan implementasi inventarisasi berbasis digital.",
                 src: "asri-praya.png",
                 fallback: "https://images.unsplash.com/photo-1541888086825-f86052f5079a?q=80&w=1200&auto=format&fit=crop"
             },
